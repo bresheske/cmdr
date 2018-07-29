@@ -1,7 +1,7 @@
 import { expect, assert } from "chai";
 import { DB } from "../services/db";
 import { Command } from "../objects/command";
-import { runCommands } from "../options/runCommands";
+import { runCommand } from "../options/runCommand";
 import { listCommands } from "../options/listCommands";
 import { saveNewCommand } from "../options/saveNewCommand";
 
@@ -20,7 +20,7 @@ describe('Remove Commands', () => {
         let res:boolean;
         try
         {
-            let result = await runCommands(['ls'], db);
+            let result = await runCommand('ls', undefined, db);
             res = true;
         }
         catch {
@@ -32,8 +32,8 @@ describe('Remove Commands', () => {
     it('should fail bad command', async() => {
         let res:boolean;
         try {
-            let result = await runCommands(['11111'], db);
-            res = result.some(s => s.startsWith('No command'));
+            let result = await runCommand('11111', undefined, db);
+            res = result.startsWith('No command');
         }
         catch {
             res = false;
@@ -45,7 +45,7 @@ describe('Remove Commands', () => {
         let res:boolean;
         try {
             await saveNewCommand('hi', ['hi'], db);
-            await runCommands(['hi'], db);
+            await runCommand('hi', undefined, db);
             res = false;
         }
         catch {
@@ -58,7 +58,7 @@ describe('Remove Commands', () => {
         let res:boolean;
         try {
             await saveNewCommand('hi', ['del hi'], db);
-            await runCommands(['hi'], db);
+            await runCommand('hi', undefined, db);
             res = false;
         }
         catch {
