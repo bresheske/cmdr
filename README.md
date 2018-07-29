@@ -1,4 +1,6 @@
 # cmdr
+![coverage](https://img.shields.io/badge/Coverage-100%25-green.svg)
+
 Easy saving / running custom commands.
 
 ## Installation
