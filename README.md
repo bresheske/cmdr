@@ -34,3 +34,16 @@ To rename a saved command:
 ```
 c -n ls dir
 ```
+
+## Examples
+Open VSCode in current working directory:
+```
+c -s vs "\"C:\Program Files\Microsoft VS Code\Code.exe\" ."
+c vs
+```
+
+Open VSCode in specifed directory:
+```
+c -s vs "\"C:\Program Files\Microsoft VS Code\Code.exe\" $1"
+c vs C:\projects
+```
