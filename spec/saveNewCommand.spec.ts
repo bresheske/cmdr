@@ -18,7 +18,7 @@ describe('Save New Command', () => {
     it('should save command', async() => {
         let commands = await listCommands(db);
         expect(commands.length).equal(1);
-        await saveNewCommand('ls1', ['dir /r'], db);
+        await saveNewCommand('ls1', 'dir /r', db);
         commands = await listCommands(db);
         expect(commands.length).equal(2);
         expect(commands[1] === 'ls1');
@@ -27,7 +27,7 @@ describe('Save New Command', () => {
     it('should update command', async() => {
         let commands = await listCommands(db);
         expect(commands.length).equal(1);
-        await saveNewCommand('ls', ['dir /r'], db);
+        await saveNewCommand('ls', 'dir /r', db);
         commands = await listCommands(db);
         expect(commands.length).equal(1);
         expect(commands[0] === 'ls');

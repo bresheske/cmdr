@@ -44,7 +44,7 @@ describe('Remove Commands', () => {
     it('should throw bad command', async() => {
         let res:boolean;
         try {
-            await saveNewCommand('hi', ['hi'], db);
+            await saveNewCommand('hi', 'hi', db);
             await runCommand('hi', undefined, db);
             res = false;
         }
@@ -57,7 +57,7 @@ describe('Remove Commands', () => {
     it('should error good command', async() => {
         let res:boolean;
         try {
-            await saveNewCommand('hi', ['del hi'], db);
+            await saveNewCommand('hi', 'del hi', db);
             await runCommand('hi', undefined, db);
             res = false;
         }

@@ -2,6 +2,8 @@ import { expect } from "chai";
 import { DB } from "../services/db";
 import { Command } from "../objects/command";
 import { runCommand } from "../options/runCommand";
+import { saveNewCommand } from "../options/saveNewCommand";
+import { parseCommand } from "../options/parseCommand";
 
 describe('Command Arguments', () => {
     const db = new DB();
@@ -23,6 +25,16 @@ describe('Command Arguments', () => {
 
     it('should pass no arguments to commands', async() => {
         let res = await runCommand('hello', undefined, db);
+    });
+
+    it('should parse $param arguments', async() => {
+        let res = await parseCommand('echo $1 > $2', 'hello temp.txt');
+        expect(res).equal('echo hello > temp.txt');
+    });
+
+    it('should parse no $param arguments', async() => {
+        let res = await parseCommand('echo hi', '');
+        expect(res).equal('echo hi');
     });
 
 });

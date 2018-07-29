@@ -1,5 +1,6 @@
 import { DB } from "../services/db";
 import { execute } from "../services/execute";
+import { parseCommand } from "./parseCommand";
 
 export async function runCommand(command:string, params?:string, db?:DB):Promise<string> {
     db = db || new DB();
@@ -12,7 +13,8 @@ export async function runCommand(command:string, params?:string, db?:DB):Promise
     }
     else {
         try {
-            let result = await execute(cmd.command, params);
+            let parsedcommand = await parseCommand(cmd.command, params);
+            let result = await execute(parsedcommand, params);
             out = result;
         }
         catch (e) {

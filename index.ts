@@ -13,7 +13,7 @@ const argv = require('minimist')(process.argv.slice(2));
     const commands:Array<string> = args._;
 
     if (savenew) {
-        await saveNewCommand(savenew, commands);
+        await saveNewCommand(savenew, commands[0]);
     }
     else if (remove) {
         await removeCommand(remove);
