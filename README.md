@@ -20,12 +20,17 @@ To save a new command:
 c -s ls dir
 ```
 
-To run the saved command:
+To run a saved command:
 ```
 c ls
 ```
 
-To remove the saved command:
+To remove a saved command:
 ```
 c -r ls
+```
+
+To rename a saved command:
+```
+c -n ls dir
 ```
