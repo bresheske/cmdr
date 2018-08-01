@@ -11,6 +11,9 @@ export async function runCommand(command:string, params?:string, db?:DB):Promise
     if (!cmd) {
         out = `No command named '${command}' found.`;
     }
+    else if (!cmd.command) {
+        out = `Command '${cmd.name}' has no defined command.`;
+    }
     else {
         try {
             let parsedcommand = await parseCommand(cmd.command, params);

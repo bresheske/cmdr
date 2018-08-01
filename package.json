@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "nyc": {
-    "exclude": [
-      "spec/**"
+    "include": [
+      "./options/**",
+      "./services/**",
+      "./objects/**"
     ]
   },
   "scripts": {

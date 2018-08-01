@@ -1,4 +1,4 @@
-export interface Command {
-    name: string,
-    command: string
+export class Command {
+    name?: string;
+    command?: string;
 }

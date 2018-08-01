@@ -1,4 +1,4 @@
-import { assert } from "chai";
+import { assert, expect } from "chai";
 import { DB } from "../services/db";
 import { Command } from "../objects/command";
 import { runCommand } from "../options/runCommand";
@@ -63,6 +63,15 @@ describe('Remove Commands', () => {
             res = true;
         }
         assert(res);
+    });
+
+    it('should not run command without definition', async() => {
+        let item:Command = {
+            name: 'fail'
+        };
+        await db.save([item]);
+        let res = await runCommand('fail', undefined, db);
+        expect(res).contains('has no defined command');
     });
 
 });
