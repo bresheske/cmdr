@@ -1,8 +1,7 @@
-import { expect, assert } from "chai";
+import { assert } from "chai";
 import { DB } from "../services/db";
 import { Command } from "../objects/command";
 import { runCommand } from "../options/runCommand";
-import { listCommands } from "../options/listCommands";
 import { saveNewCommand } from "../options/saveNewCommand";
 
 describe('Remove Commands', () => {
@@ -18,8 +17,7 @@ describe('Remove Commands', () => {
 
     it('should remove command', async() => {
         let res:boolean;
-        try
-        {
+        try {
             let result = await runCommand('ls', undefined, db);
             res = true;
         }

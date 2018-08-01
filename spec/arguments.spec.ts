@@ -2,7 +2,6 @@ import { expect } from "chai";
 import { DB } from "../services/db";
 import { Command } from "../objects/command";
 import { runCommand } from "../options/runCommand";
-import { saveNewCommand } from "../options/saveNewCommand";
 import { parseCommand } from "../options/parseCommand";
 
 describe('Command Arguments', () => {

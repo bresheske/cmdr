@@ -1,4 +1,4 @@
-import { expect, assert } from "chai";
+import { assert } from "chai";
 import { DB } from "../services/db";
 import { Command } from "../objects/command";
 import { listCommands } from "../options/listCommands";

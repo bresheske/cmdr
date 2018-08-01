@@ -3,6 +3,7 @@ import { removeCommand } from "./options/removeCommand";
 import { runCommand } from "./options/runCommand";
 import { listCommands } from "./options/listCommands";
 import { renameCommand } from "./options/renameCommand";
+import { helpCommand } from "./options/helpCommand";
 
 const argv = require('minimist')(process.argv.slice(2));
 
@@ -10,6 +11,7 @@ const argv = require('minimist')(process.argv.slice(2));
     const savenew = args.s;
     const remove = args.r;
     const rename = args.n;
+    const help = args.h;
     const commands:Array<string> = args._;
 
     if (savenew) {
@@ -26,6 +28,10 @@ const argv = require('minimist')(process.argv.slice(2));
         let params = commands.slice(1).join(" ");
         let res = await runCommand(cmd, params);
         console.log(res);
+    }
+    else if (help) {
+        let helpstr = await helpCommand();
+        console.log(helpstr);
     }
     else {
         let comms = await listCommands();

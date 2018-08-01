@@ -15,6 +15,11 @@ Secondly, add the dist folder into your PATH variable. 'c.exe' should now be ava
 
 ## Usage
 
+To display some help messages:
+```
+c -h
+```
+
 To save a new command:
 ```
 c -s ls dir
