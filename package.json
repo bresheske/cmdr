@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "async-file": "^2.0.2",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "split-string-words": "^1.0.0"
   }
 }
