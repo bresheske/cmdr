@@ -4,32 +4,35 @@ import { runCommand } from "./options/runCommand";
 import { listCommands } from "./options/listCommands";
 import { renameCommand } from "./options/renameCommand";
 import { helpCommand } from "./options/helpCommand";
+import { Args } from "./objects/args";
 
 const argv = require('minimist')(process.argv.slice(2));
 
 (async(args) => {
-    const savenew = args.s;
-    const remove = args.r;
-    const rename = args.n;
-    const help = args.h;
-    const commands:Array<string> = args._;
+    const a:Args = {
+        save: args.s,
+        commands: args._,
+        help: args.h,
+        remove: args.r,
+        rename: args.n
+    };
 
-    if (savenew) {
-        await saveNewCommand(savenew, commands[0]);
+    if (a.save) {
+        await saveNewCommand(a.save, a.commands[0]);
     }
-    else if (remove) {
-        await removeCommand(remove);
+    else if (a.remove) {
+        await removeCommand(a.remove);
     }
-    else if (rename) {
-        await renameCommand(rename, commands[0]);
+    else if (a.rename) {
+        await renameCommand(a.rename, a.commands[0]);
     }
-    else if(commands && commands.length > 0) {
-        let cmd = commands[0];
-        let params = commands.slice(1).join(" ");
+    else if(a.commands && a.commands.length > 0) {
+        let cmd = a.commands[0];
+        let params = a.commands.slice(1).join(" ");
         let res = await runCommand(cmd, params);
         console.log(res);
     }
-    else if (help) {
+    else if (a.help) {
         let helpstr = await helpCommand();
         console.log(helpstr);
     }
