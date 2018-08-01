@@ -36,4 +36,9 @@ describe('Command Arguments', () => {
         expect(res).equal('echo hi');
     });
 
+    it('should pass $param arguments with quote separations', async() => {
+        let res = await parseCommand('echo $1.$2.$3', '"hello world" "my name is" kitten');
+        expect(res).equal('echo hello world.mynameis.kitten');
+    });
+
 });
